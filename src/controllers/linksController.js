@@ -71,7 +71,7 @@ exports.hasPassword = async (req, res, next) => {
     }
 
     if (link.password) {
-        return res.json({password: true, link: link.url})
+        return res.json({...link._doc, password: true, link: link.url})
     } 
 
     next();
@@ -103,7 +103,7 @@ exports.getLink = async (req, res, next) => {
     }
 
     // si el link existe
-    res.json({file: link.fileName, password: false});
+    res.json({...link._doc, file: link.fileName, password: false});
 
     next();
 }

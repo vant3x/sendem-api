@@ -30,7 +30,7 @@ exports.userAuthentication = async (req, res, next) => {
             username: user.username,
             email: user.email,
         }, process.env.SECRET, {
-            expiresIn: '12h',
+            expiresIn: '48h',
         } );
 
         res.json(token);
