@@ -17,6 +17,11 @@ router.get('/links',
     linksController.getLinks
 );
 
+router.get('/links/:idUser',
+    linksController.getLinksByUser
+);
+
+
 router.get('/link/:url', 
     linksController.hasPassword,
     linksController.getLink

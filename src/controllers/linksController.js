@@ -60,6 +60,16 @@ exports.getLinks = async (req, res, next) => {
 }
 
 
+// getlinks by user 
+exports.getLinksByUser = async (req, res, next) => {
+    try {
+        const links = await Links.find({author: req.params.idUser}).sort({created_at: -1});
+        res.json({links: links});
+    } catch(error) {
+
+    }
+}
+
 // retorna si el link tiene password
 exports.hasPassword = async (req, res, next) => {
     // verificar si existe el link
