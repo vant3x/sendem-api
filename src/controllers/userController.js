@@ -48,3 +48,14 @@ exports.getUser = async (req, res) => {
         res.json({message: 'No se encontró el usuario o hubo un problema'});
     }
 };
+
+exports.getUserProfile = async (req, res) => {
+    const {id} = req.params;
+    try {
+        let user = await User.findById(id).select('-password');
+        res.json({user});
+    } catch(error) {
+        console.log(error);
+        res.json({message: 'No se encontró el usuario o hubo un problema'});
+    }
+};
