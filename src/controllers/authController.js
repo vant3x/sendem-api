@@ -29,6 +29,7 @@ exports.userAuthentication = async (req, res, next) => {
             name: user.name,
             username: user.username,
             email: user.email,
+            role: user.role
         }, process.env.SECRET, {
             expiresIn: '48h',
         } );
