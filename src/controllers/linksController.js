@@ -20,12 +20,17 @@ exports.newLink = async (req, res, next) => {
 
     // si el usuario esta autenticado
     if (req.user) {
-        const { password, download_limit } = req.body;
-
+        const { password, download_limit, folder } = req.body;
         // asignar a link numero de descargar y password
         if (download_limit) {
             link.downloadLimit = download_limit;
         }  
+
+
+        if (folder) {
+            link.folder = folder;
+        }  
+
 
         // encriptar  y guardar password archivos si existe un usuario
         if (password) {
@@ -41,6 +46,7 @@ exports.newLink = async (req, res, next) => {
     try {
         await link.save();
         res.json({message: `${link.url}`});
+      
         return next();
     } catch (error) {
         console.log(error);

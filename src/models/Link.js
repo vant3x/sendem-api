@@ -27,6 +27,12 @@ const linkSchema = new Schema({
         type: String,
         default: null
     },
+    folder : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Folder',
+        default: null,
+        required: false
+    },
     created_at:{
         type: Date,
         default: Date.now()

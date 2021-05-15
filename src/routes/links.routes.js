@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const linksController = require('./../controllers/linksController');
+const foldersController = require('./../controllers/foldersController');
 const { check } = require('express-validator');
 const auth = require('../middlewares/auth');
 
@@ -10,7 +11,8 @@ router.post('/links',
         check('original_name' ,'Sube un archivo').not().isEmpty()
     ],
     auth,   
-    linksController.newLink
+    linksController.newLink,
+    foldersController.updateFilesFolder
 );
 
 router.get('/links',

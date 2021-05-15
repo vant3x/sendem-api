@@ -37,6 +37,7 @@ app.use('/api', require('./src/routes/users.routes'));
 app.use('/api', require('./src/routes/auth.routes'));
 app.use('/api', require('./src/routes/links.routes'));
 app.use('/api', require('./src/routes/files.routes'));
+app.use('/api', require('./src/routes/folders.routes'));
 
 // Arrancar la app
 app.listen(port, '0.0.0.0', () => {

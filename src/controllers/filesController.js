@@ -4,8 +4,8 @@ const fs = require('fs');
 const Links = require('../models/Link');
 
 exports.uploadFile = async (req, res, next) => {
-    console.log('hola');
-    const adminLimitSize = req.user.role > 0 ? 2000000000 : 20000000;
+    console.log(req.user);
+    const adminLimitSize = req.user && req.user.role > 0 ? 2000000000 : 20000000;
     const multerConfig = {
         limits: { fileSize : req.user ? adminLimitSize :  4000000 },
         storage: fileStorage = multer.diskStorage({
